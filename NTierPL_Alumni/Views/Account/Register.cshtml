@@ -1,0 +1,40 @@
+﻿@using NTierPL_Alumni.Models;
+@model UserPO
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/myJavaScript.js"></script>
+
+<h2>Register</h2>
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+    <div class="form-horizontal">
+
+        <label>*</label>@Html.LabelFor(model => Model.CompleteName)
+        <div class="form-group">
+            @Html.TextBoxFor(model => Model.CompleteName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => Model.CompleteName,"",new { @class = "text-danger"})
+        </div>
+
+        <label>*</label>@Html.LabelFor(model => Model.UserName)
+        <div class="form-group">
+            @Html.TextBoxFor(model => Model.UserName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => Model.UserName, "", new { @class = "text-danger" })
+        </div>
+
+        <label>*</label>@Html.LabelFor(model => Model.Password)
+        <div class="form-group">
+            <span class="label label-danger">Hover to check password.</span>
+        </div>
+        <div class="form-group">
+            @Html.PasswordFor(model => Model.Password, new { @class = "form-control", @id = "show_password" })
+            @Html.ValidationMessageFor(model => Model.Password, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn-warning" value="Register" />
+        </div>
+
+    </div>
+}

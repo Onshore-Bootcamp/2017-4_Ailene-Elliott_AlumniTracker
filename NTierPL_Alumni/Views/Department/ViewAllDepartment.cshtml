@@ -1,0 +1,42 @@
+﻿@using NTierPL_Alumni.Models;
+@model List<DepartmentPO>
+@{
+    ViewBag.Title = "View All Department";
+}
+
+<h2>View All Department</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Department Name</th>
+            <th>Description</th>
+            <th>Department Head</th>
+            <th>Department Head Specialization</th>
+            <th>No.of Alumni per Department</th>
+            @if ((int)Session["RoleID"] == 1 || (int)Session["RoleID"] == 2)
+            {
+            <th colspan="2">Actions</th>
+            }
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DepartmentPO dpo in Model)
+        {
+            <tr>
+                <td>@dpo.DeptName</td>
+                <td>@dpo.Description</td>
+                <td>@dpo.DeptHead</td>
+                <td>@dpo.DeptHeadSpecialization</td>
+                <td>@dpo.AlumniCount</td>
+
+                @if ((int)Session["RoleID"] == 1 || (int)Session["RoleID"] == 2)
+                {
+                <td>@Html.ActionLink("Update", "UpdateDepartment", "Department", new { DeptID = dpo.DeptID }, null)</td>
+                <td>@Html.ActionLink("Delete", "DeleteDepartment", "Department", new { DeptID = dpo.DeptID }, new { onclick = "return confirm('Alumni Record associated with this department will be deleted. ARE YOU SURE YOU WANT TO DELETE THIS DEPARTMENT?');" })</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+

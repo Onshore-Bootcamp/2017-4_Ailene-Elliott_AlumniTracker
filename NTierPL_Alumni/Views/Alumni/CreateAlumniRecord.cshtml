@@ -1,0 +1,64 @@
+﻿@using NTierPL_Alumni.ViewModels;
+@model AlumniVM
+@{
+    ViewBag.Title = "Create Alumni Record";
+}
+
+
+<h2>Create Alumni Record</h2>
+
+<!--creating a form format-->
+<!--The BeginForm method renders a form that will be handled by a controller action method.-->
+@using (Html.BeginForm("CreateAlumniRecord", "Alumni", FormMethod.Post))
+{
+    <div class="form-horizontal">
+
+        <!--* label for required field-->
+        <!--labelling the box in each form-->
+        <label>*</label>@Html.LabelFor(model => Model.AlumniForm.CompleteName)
+
+        <!--form-group class is needed for optimum spacing-->
+        <div class="form-group">
+            <!--Text box to create a box for the form-->
+            @Html.TextBoxFor(model => Model.AlumniForm.CompleteName, new { @class = "form-control" })
+            <!--if any attributes that did not met,warning message will appear.-->
+            @Html.ValidationMessageFor(model => Model.AlumniForm.CompleteName, "", new { @class = "text-danger" })
+        </div>
+       
+        <label>*</label>@Html.LabelFor(model => Model.AlumniForm.YearGraduated)
+        <div class="form-group">
+            @Html.TextBoxFor(model => Model.AlumniForm.YearGraduated, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => Model.AlumniForm.YearGraduated, "", new { @class = "text-danger" }) 
+        </div>
+
+        <label>*</label>@Html.LabelFor(model => Model.AlumniForm.Position)
+        <div class="form-group">
+            @Html.TextBoxFor(model => Model.AlumniForm.Position, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => Model.AlumniForm.Position, "", new { @class = "text-danger" })
+        </div>
+
+        <label>*</label>@Html.LabelFor(model => Model.AlumniForm.Company)
+        <div class="form-group">
+            @Html.TextBoxFor(model => Model.AlumniForm.Company, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => Model.AlumniForm.Company, "", new { @class = "text-danger" })
+        </div>
+
+        <label>*</label>@Html.LabelFor(model => Model.AlumniForm.ContactNumber)
+        <div class="form-group">
+            @Html.TextBoxFor(model => Model.AlumniForm.ContactNumber, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => Model.AlumniForm.ContactNumber, "", new { @class = "text-danger" })
+        </div>
+
+        <label>*</label>@Html.LabelFor(model => Model.AlumniForm.DepartmentID)
+        <div class="form-group">
+            @Html.DropDownListFor(model => Model.AlumniForm.DepartmentID, Model.DepartmentDropDown, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => Model.AlumniForm.DepartmentID,"", new { @class = "text-danger"})
+
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Submit" />
+        </div>
+    </div>
+}
+

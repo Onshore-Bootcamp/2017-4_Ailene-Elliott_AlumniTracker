@@ -1,0 +1,6 @@
+C:\Users\Ailene\source\repos\CAPSTONE PROJECT\NTierDAL_Alumni\bin\Debug\NTierDAL_Alumni.dll
+C:\Users\Ailene\source\repos\CAPSTONE PROJECT\NTierDAL_Alumni\bin\Debug\NTierDAL_Alumni.pdb
+C:\Users\Ailene\source\repos\CAPSTONE PROJECT\NTierDAL_Alumni\obj\Debug\NTierDAL_Alumni.csprojResolveAssemblyReference.cache
+C:\Users\Ailene\source\repos\CAPSTONE PROJECT\NTierDAL_Alumni\obj\Debug\NTierDAL_Alumni.csproj.CoreCompileInputs.cache
+C:\Users\Ailene\source\repos\CAPSTONE PROJECT\NTierDAL_Alumni\obj\Debug\NTierDAL_Alumni.dll
+C:\Users\Ailene\source\repos\CAPSTONE PROJECT\NTierDAL_Alumni\obj\Debug\NTierDAL_Alumni.pdb

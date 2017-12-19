@@ -1,0 +1,47 @@
+﻿@using NTierPL_Alumni.Models;
+@model List<AlumniPO>
+@{
+    ViewBag.Title = "View All Alumni";
+}
+
+
+<!--headre-->
+<h2>View All Alumni</h2>
+
+<!--creating a table-->
+<table class="table">
+
+    <!--table head-->
+    <thead>
+        <!--that put in a row-->
+        <tr>
+            <th>Complete Name</th>
+            <th>Year Graduated</th>
+            <th>Position</th>
+            <th>Company</th>
+            <th>Contact Number</th>
+            <th>Department</th>
+            <!--merging 2 column cell-->
+            <th colspan="2">Actions</th>
+        </tr>
+    </thead>
+
+    <!--table body-->
+    <tbody>
+        <!--running into foreach loop to get all the info and fill out every row.-->
+        @foreach (AlumniPO apo in Model)
+            {
+            <tr>
+                <td>@apo.CompleteName</td>
+                <td>@apo.YearGraduated</td>
+                <td>@apo.Position</td>
+                <td>@apo.Company</td>
+                <td>@apo.ContactNumber</td>
+                <td>@apo.Department</td>
+                <!--update and delete will be redirected to the controller to do the action.-->
+                <td>@Html.ActionLink("Update", "UpdateAlumniRecord", "Alumni", new { RecordID = apo.RecordID }, null)</td>
+                <td>@Html.ActionLink("Delete", "DeleteAlumniRecord", "Alumni", new { RecordID = apo.RecordID }, new { onclick = "return confirm('Are you sure  you wish to delete this row?');" })</td>
+            </tr>
+        }
+    </tbody>
+</table>

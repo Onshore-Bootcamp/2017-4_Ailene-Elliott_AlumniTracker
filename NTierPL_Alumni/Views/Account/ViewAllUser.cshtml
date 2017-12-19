@@ -1,0 +1,40 @@
+﻿@using NTierPL_Alumni.Models;
+@model List<UserPO>
+@{
+    ViewBag.Title = "View All User";
+}
+
+<h2>View All User</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Complete Name</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Role ID</th>
+            <th colspan="2">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (UserPO upo in Model)
+        {
+            <tr>
+                <td>@upo.CompleteName</td>
+                <td>@upo.UserName</td>
+                <td>@Html.Raw(new String('*', upo.Password.Trim().Count()))</td>
+                <td>@upo.RoleID</td>
+                <td>@Html.ActionLink("Update", "UpdateUser", "Account", new { UserID = upo.UserID }, null)</td>
+
+                @if ((int)Session["RoleID"] == 1)
+                {
+                    <td>@Html.ActionLink("Delete", "DeleteUser", "Account", new { userID = upo.UserID }, new { onclick = "return confirm('Are you sure  you wish to delete this row?');" })</td>
+                }
+                
+                
+                    
+            </tr>
+        }
+    </tbody>
+    
+</table>
+

@@ -1,0 +1,43 @@
+﻿@using NTierPL_Alumni.Models;
+@model DepartmentPO
+
+@{
+    ViewBag.Title = "Create Department";
+}
+
+<h2>Create Department</h2>
+@using (Html.BeginForm("CreateDepartment", "Department", FormMethod.Post))
+{
+    <div class="form-horizontal">
+
+        <label>*</label>@Html.LabelFor(model => Model.DeptName)
+        <div class="form-group">
+            @Html.TextBoxFor(model => Model.DeptName, new { @class = "form-control"})
+            @Html.ValidationMessageFor(model => Model.DeptName,"", new { @class = "text-danger"})
+        </div>
+
+        <label>*</label>@Html.LabelFor(model => Model.Description)
+        <div class="form-group">
+            @Html.TextBoxFor(model => Model.Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => Model.Description, "", new { @class = "text-danger" })
+        </div>
+
+        <label>*</label>@Html.LabelFor(model => Model.DeptHead)
+        <div class="form-group">
+            @Html.TextBoxFor(model => Model.DeptHead, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => Model.DeptHead, "", new { @class = "text-danger" })
+        </div>
+
+        <label>*</label>@Html.LabelFor(model => Model.DeptHeadSpecialization)
+        <div class="form-group">
+            @Html.TextBoxFor(model => Model.DeptHeadSpecialization, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => Model.DeptHeadSpecialization, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Submit" />
+
+        </div>
+    </div>
+}
+

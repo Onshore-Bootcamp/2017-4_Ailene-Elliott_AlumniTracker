@@ -1,0 +1,46 @@
+﻿@using NTierPL_Alumni.ViewModels;
+@model UserVM
+@{
+    ViewBag.Title = "Create User";
+}
+<script src="~/Scripts/myJavaScript.js"></script>
+
+<h2>Create User</h2>
+@using (Html.BeginForm("CreateUser", "Account", FormMethod.Post))
+{
+    <div class="form-horizontal">
+
+        <label>*</label>@Html.LabelFor(model => Model.UserForm.CompleteName)
+        <div class="form-group">
+            @Html.TextBoxFor(model => Model.UserForm.CompleteName, new { @class = "form-control"})
+            @Html.ValidationMessageFor(model => Model.UserForm.CompleteName, "", new { @class = "text-danger" })
+        </div>
+
+        <label>*</label>@Html.LabelFor(model => Model.UserForm.UserName)
+        <div class="form-group">
+            @Html.TextBoxFor(model => Model.UserForm.UserName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => Model.UserForm.UserName, "", new { @class = "text-danger" })
+        </div>
+
+        <label>*</label>@Html.LabelFor(model => Model.UserForm.Password)
+        <div class="form-group">
+            <span class="label label-danger">Hover to check password.</span>
+        </div>
+        <div class="form-group">
+            @Html.PasswordFor(model => Model.UserForm.Password, new { @class = "form-control",@id="show_password" })
+            @Html.ValidationMessageFor(model => Model.UserForm.Password, "", new { @class = "text-danger" })
+        </div>
+
+        <label>*</label>@Html.LabelFor(model => Model.UserForm.RoleID)
+        <div class="form-group">
+            @Html.DropDownListFor(model => Model.UserForm.RoleID, Model.RoleDropDown, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => Model.UserForm.RoleID, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <input type="Submit" value="Submit" />
+        </div>
+
+    </div>
+}
+

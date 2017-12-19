@@ -1,0 +1,25 @@
+﻿@using NTierPL_Alumni.Models;
+@model List<RolePO>
+@{
+    ViewBag.Title = "View All Role";
+}
+
+<h2>View All Role</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (RolePO rpo in Model)
+        {
+            <tr>
+                <td>@rpo.Name</td>
+                <td>@rpo.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

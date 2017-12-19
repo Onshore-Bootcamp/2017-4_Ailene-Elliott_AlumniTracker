@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    <div id="nav_bar" class="navbar  navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header"> 
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://localhost:49504/Home/About" >
+                    <img alt="Brand" class="img-responsive" src="https://upload.wikimedia.org/wikipedia/en/thumb/3/32/Seal_of_Polytechnic_University_of_the_Philippines.svg/1200px-Seal_of_Polytechnic_University_of_the_Philippines.svg.png" 
+                         style="height:145%;">
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About Us", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                    @if (Session["RoleId"] != null)
+                    {
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                View All <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                                @if ((int)Session["RoleID"] == 1 || (int)Session["RoleID"] == 2 || (int)Session["RoleID"] == 3)
+                                {
+                                    <!--giving access to role 1,2,3 to read the dropdown view all alumni-->
+                                    <li>@Html.ActionLink("Alumni Records", "ViewAllAlumni", "Alumni")</li>
+                                }
+
+                                @if ((int)Session["RoleID"] == 1 || (int)Session["RoleID"] == 2 || (int)Session["RoleID"] == 3)
+                                {
+                                    <!--giving access to role 1,2,3 to read the dropdown view all department-->
+                                    <li>@Html.ActionLink("Departments", "ViewAllDepartment", "Department")</li>
+                                }
+                                
+                                @if ((int)Session["RoleID"] == 1)
+                                {
+                                    <!--giving access to only role 1 to view this dropdown-->
+                                    <li>@Html.ActionLink("Users", "ViewAllUser", "Account")</li>
+                                    <li>@Html.ActionLink("Roles", "ViewAllRole", "Role")</li>
+                                }
+                            </ul>
+                        </li>
+                    }
+
+                    @if (Session["RoleID"] != null)
+                    {
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                Create <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                @if ((int)Session["RoleID"] == 1 || (int)Session["RoleID"] == 2 || (int)Session["RoleID"] == 3)
+                                {
+                                    <!--giving access to role 1,2,3 to the dropdown create alumni record-->
+                                    <li>@Html.ActionLink("Create Alumni Record", "CreateAlumniRecord", "Alumni")</li>
+                                }
+
+                                @if ((int)Session["RoleID"] == 1 || (int)Session["RoleID"] == 2)
+                                {
+                                    <!--giving access to role 1,2, to the dropdown create department-->
+                                    <li>@Html.ActionLink("Create Department Record", "CreateDepartment", "Department")</li>
+                                }
+
+                                @if ((int)Session["RoleID"] == 1)
+                                {
+                                    <!--giving access to only role 1 to view this dropdown-->
+                                    <li>@Html.ActionLink("Create User", "CreateUser", "Account")</li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Session["UserName"] != null)
+                    {
+                        <!--showing which user is log in on the website-->
+                        <li>@Html.ActionLink(Session["UserName"].ToString(), "#", "#")</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                        <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <h5>&copy; @DateTime.Now.Year - My ASP.NET Application</h5>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
